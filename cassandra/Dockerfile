@@ -27,7 +27,7 @@ MAINTAINER Hawkular Metrics <hawkular-dev@lists.jboss.org>
 EXPOSE 9042 9160 7000 7001
 
 # The Cassandra version
-ENV CASSANDRA_VERSION="2.2.4" \
+ENV CASSANDRA_VERSION="2.2.6" \
     CASSANDRA_HOME="/opt/apache-cassandra" \
     HOME="/home/cassandra" \
     MAX_HEAP_SIZE="512M" \
@@ -47,7 +47,7 @@ COPY apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz.md5 \
 
 # Copy the Cassandra binary to the /opt directory
 RUN cd /opt; \
-    curl -LO https://archive.apache.org/dist/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
+    curl -LO http://mirrors.aliyun.com/apache/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
     if [ "$(md5sum apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz | awk '{print $1}')" != "$(cat /tmp/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz.md5)" ]; then echo "The Cassandra binary does not match the expected md5sum"; exit 1; fi && \
     tar xzf apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
     rm apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
