@@ -137,7 +137,7 @@ sed -i 's/${HOSTNAME}/'$HOSTNAME'/g' /opt/apache-cassandra/conf/cassandra.yaml
 
 # if the seed list is not set, try and get it from the gather-seeds script
 if [ -z "$SEEDS" ]; then
-  source /opt/apache-cassandra/bin/gather-seeds.sh
+  source /opt/apache-cassandra/bin/gather-seeds.sh ${CASSANDRA_SERVICE}
 fi
 
 echo "Setting seeds to be ${SEEDS}"

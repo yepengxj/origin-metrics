@@ -7,7 +7,7 @@ RETRIES=30
 WAIT_TIME_SECONDS=2
 
 #The service hostname used to look up the seed addresses
-SERVICE="hawkular-cassandra-nodes"
+SERVICE=$1
 
 #Get the default seed from the hostname of this machine
 default_seed=${HOSTNAME}
